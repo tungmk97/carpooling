@@ -145,10 +145,10 @@ export default function Home() {
       <section className="bg-gradient-to-r from-primary to-primary-dark text-white py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-3xl md:text-5xl font-bold mb-6">
+            <h1 className="text-3xl md:text-5xl font-bold mb-6 whitespace-nowrap">
               Xe Ghép Nam Định - Hà Nội
             </h1>
-            <p className="text-lg md:text-xl mb-8 text-gray-100">
+            <p className="text-lg md:text-xl mb-8 text-gray-100 whitespace-nowrap">
               Dịch vụ đưa đón uy tín, tiện lợi, giá cả phải chăng
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
