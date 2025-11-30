@@ -1,19 +1,9 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import ImageCarousel from "@/components/ImageCarousel";
+'use client';
 
-export const metadata: Metadata = {
-  title: "Xe Ghép Nam Định - Hà Nội | Dịch Vụ Đưa Đón Uy Tín, Giá Rẻ",
-  description:
-    "Dịch vụ xe ghép Nam Định - Hà Nội uy tín, giá rẻ. Đưa đón tận nơi, xe mới, lái xe chuyên nghiệp. Ghép ghế 250k, Bao xe 4 chỗ 900k, Bao xe 7 chỗ 1100k. Liên hệ: 0971852897",
-  openGraph: {
-    title: "Xe Ghép Nam Định - Hà Nội | Dịch Vụ Đưa Đón Uy Tín, Giá Rẻ",
-    description:
-      "Dịch vụ xe ghép Nam Định - Hà Nội uy tín, giá rẻ. Đưa đón tận nơi, xe mới, lái xe chuyên nghiệp",
-    type: "website",
-    locale: "vi_VN",
-  },
-};
+import Link from "next/link";
+import { motion } from 'framer-motion';
+import ImageCarousel from "@/components/ImageCarousel";
+import { staggerContainer, staggerItem, buttonHover, buttonTap } from '@/lib/animations';
 
 export default function Home() {
   const benefits = [
@@ -142,69 +132,123 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-primary-dark text-white py-16 md:py-24">
+      <section className="bg-gradient-to-r from-primary via-primary-dark to-primary text-white py-16 md:py-24 animated-gradient">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-2xl md:text-5xl font-bold mb-6">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-2xl md:text-5xl font-bold mb-6"
+            >
               Xe Ghép Nam Định - Hà Nội
-            </h1>
-            <p className="text-base md:text-xl mb-8 text-gray-100">
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="text-base md:text-xl mb-8 text-gray-100"
+            >
               Dịch vụ đưa đón uy tín, tiện lợi, giá cả phải chăng
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <motion.a
+                whileHover={buttonHover}
+                whileTap={buttonTap}
                 href="tel:0971852897"
-                className="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
+                className="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-xl font-semibold text-lg transition-colors"
               >
                 Gọi ngay: 0971 852 897
-              </a>
-              <Link
-                href="/lien-he"
-                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-3 rounded-lg font-semibold text-lg transition-colors"
-              >
-                Xem thông tin liên hệ
-              </Link>
-            </div>
+              </motion.a>
+              <motion.div whileHover={buttonHover} whileTap={buttonTap}>
+                <Link
+                  href="/lien-he"
+                  className="block bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-3 rounded-xl font-semibold text-lg transition-colors"
+                >
+                  Xem thông tin liên hệ
+                </Link>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12"
+          >
             Lợi ích khi sử dụng dịch vụ của chúng tôi
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          </motion.h2>
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {benefits.map((benefit, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-gray-50 p-6 rounded-lg hover:shadow-lg transition-shadow"
+                variants={staggerItem}
+                whileHover={{
+                  y: -8,
+                  boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                }}
+                className="bg-gray-50 p-8 rounded-xl shadow-md transition-shadow"
               >
                 <div className="text-primary mb-4">{benefit.icon}</div>
                 <h3 className="text-xl font-bold text-gray-800 mb-3">
                   {benefit.title}
                 </h3>
                 <p className="text-gray-600">{benefit.description}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Pricing Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4"
+          >
             Bảng giá dịch vụ
-          </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-center text-gray-600 mb-12 max-w-2xl mx-auto"
+          >
             Giá cả minh bạch, hợp lý. Liên hệ để được tư vấn chi tiết và đặt xe.
-          </p>
+          </motion.p>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* City Routes Pricing */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-primary transition-shadow duration-300"
+            >
               <div className="bg-primary text-white py-4 px-6">
                 <h3 className="text-2xl font-bold text-center">Nội thành</h3>
                 <p className="text-center text-sm text-gray-100 mt-1">
@@ -245,10 +289,16 @@ export default function Home() {
                   </tbody>
                 </table>
               </div>
-            </div>
+            </motion.div>
 
             {/* Airport Routes Pricing */}
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-primary transition-shadow duration-300"
+            >
               <div className="bg-primary text-white py-4 px-6">
                 <h3 className="text-2xl font-bold text-center">Sân bay</h3>
                 <p className="text-center text-sm text-gray-100 mt-1">
@@ -289,55 +339,90 @@ export default function Home() {
                   </tbody>
                 </table>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Image Carousel Section */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12"
+          >
             Hình ảnh dịch vụ
-          </h2>
-          <ImageCarousel
-            images={[
-              "/images/sua.png",
-              "/images/noithat1.jpg",
-              "/images/noithat1.jpg",
-              "/images/noithat1.jpg",
-              "/images/noithat1.jpg",
-            ]}
-          />
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <ImageCarousel
+              images={[
+                "/images/sua.png",
+                "/images/noithat1.jpg",
+                "/images/noithat1.jpg",
+                "/images/noithat1.jpg",
+                "/images/noithat1.jpg",
+              ]}
+            />
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary text-white">
+      <section className="py-20 bg-gradient-to-r from-primary via-primary-dark to-primary text-white animated-gradient">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-bold mb-6"
+          >
             Sẵn sàng đặt xe ngay?
-          </h2>
-          <p className="text-lg md:text-xl mb-8 text-gray-100 max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-lg md:text-xl mb-8 text-gray-100 max-w-2xl mx-auto"
+          >
             Liên hệ với chúng tôi để đặt xe và nhận được tư vấn chi tiết về dịch
             vụ
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <motion.a
+              whileHover={buttonHover}
+              whileTap={buttonTap}
               href="tel:0971852897"
-              className="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold text-lg transition-colors inline-block"
+              className="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-xl font-semibold text-lg transition-colors inline-block"
             >
               Gọi điện: 0971 852 897
-            </a>
-            <a
+            </motion.a>
+            <motion.a
+              whileHover={buttonHover}
+              whileTap={buttonTap}
               href="https://zalo.me/0971852897"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-3 rounded-lg font-semibold text-lg transition-colors inline-block"
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-3 rounded-xl font-semibold text-lg transition-colors inline-block"
             >
               Nhắn Zalo
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
         </div>
       </section>
     </div>

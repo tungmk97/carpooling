@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -66,26 +67,68 @@ export default function Navigation() {
         </button>
 
         {/* Mobile Menu Dropdown */}
-        {isMenuOpen && (
-          <div className="absolute top-full left-0 right-0 bg-white shadow-lg border-t">
-            <nav className="container mx-auto px-4 py-4 flex flex-col gap-3">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`py-2 px-4 rounded font-medium transition-colors ${
-                    pathname === item.href
-                      ? "bg-primary text-white"
-                      : "text-gray-700 hover:bg-gray-100"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-        )}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="absolute top-full left-0 right-0 bg-white shadow-lg border-t overflow-hidden"
+            >
+              <motion.nav
+                initial="closed"
+                animate="open"
+                exit="closed"
+                variants={{
+                  open: {
+                    transition: {
+                      staggerChildren: 0.1,
+                      delayChildren: 0.1,
+                    },
+                  },
+                  closed: {
+                    transition: {
+                      staggerChildren: 0.05,
+                      staggerDirection: -1,
+                    },
+                  },
+                }}
+                className="container mx-auto px-4 py-4 flex flex-col gap-3"
+              >
+                {navItems.map((item) => (
+                  <motion.div
+                    key={item.href}
+                    variants={{
+                      open: {
+                        opacity: 1,
+                        x: 0,
+                        transition: { duration: 0.3 },
+                      },
+                      closed: {
+                        opacity: 0,
+                        x: -20,
+                        transition: { duration: 0.2 },
+                      },
+                    }}
+                  >
+                    <Link
+                      href={item.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`block py-2 px-4 rounded font-medium transition-colors ${
+                        pathname === item.href
+                          ? "bg-primary text-white"
+                          : "text-gray-700 hover:bg-gray-100"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </motion.nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </>
   );

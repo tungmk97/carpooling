@@ -1,14 +1,33 @@
 "use client";
 
+import { motion } from "framer-motion";
+
+const buttonHover = {
+  scale: 1.05,
+  boxShadow: "0 10px 20px -5px rgba(0, 0, 0, 0.2)",
+  transition: { type: "spring" as const, stiffness: 400, damping: 17 },
+};
+
+const buttonTap = {
+  scale: 0.95,
+};
+
 export default function StickyContactBar() {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-primary shadow-lg">
+    <motion.div
+      initial={{ y: 100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: 1, duration: 0.5, ease: "easeOut" }}
+      className="fixed bottom-0 left-0 right-0 z-50 bg-primary shadow-lg"
+    >
       <div className="container mx-auto px-4 py-3">
         <div className="flex gap-3 justify-center items-center">
           {/* Phone Button */}
-          <a
+          <motion.a
+            whileHover={buttonHover}
+            whileTap={buttonTap}
             href="tel:0971852897"
-            className="flex-1 max-w-sm flex items-center justify-center gap-2 bg-white text-primary hover:bg-gray-50 active:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-md"
+            className="flex-1 max-w-sm flex items-center justify-center gap-2 bg-white text-primary hover:bg-gray-50 active:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition-colors duration-200 shadow-md"
             aria-label="Gọi điện thoại 0971852897"
           >
             <svg
@@ -26,14 +45,16 @@ export default function StickyContactBar() {
               />
             </svg>
             <span>0971 852 897</span>
-          </a>
+          </motion.a>
 
           {/* Zalo Button */}
-          <a
+          <motion.a
+            whileHover={buttonHover}
+            whileTap={buttonTap}
             href="https://zalo.me/0971852897"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 max-w-sm flex items-center justify-center gap-2 bg-white text-primary hover:bg-gray-50 active:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-md"
+            className="flex-1 max-w-sm flex items-center justify-center gap-2 bg-white text-primary hover:bg-gray-50 active:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition-colors duration-200 shadow-md"
             aria-label="Nhắn tin Zalo 0971852897"
           >
             <svg
@@ -45,9 +66,9 @@ export default function StickyContactBar() {
               <path d="M12 2C6.477 2 2 6.145 2 11.278c0 2.853 1.333 5.396 3.422 7.13l-.634 3.173c-.055.276.178.514.45.46l3.956-1.582c1.527.618 3.214.963 4.806.963 5.523 0 10-4.145 10-9.278S17.523 2 12 2zm.126 13.5h-2.25v-6h2.25v6zm3.375 0h-2.25v-6h2.25v6zm-6.75 0h-2.25v-6h2.25v6z" />
             </svg>
             <span>Chat Zalo</span>
-          </a>
+          </motion.a>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

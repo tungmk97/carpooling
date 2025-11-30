@@ -4,6 +4,10 @@
   --color-primary: #43A047;
   --color-primary-light: #66BB6A;
   --color-primary-dark: #2E7D32;
+  --color-accent: #FF9800;
+  --color-bg-subtle: #F8FBF8;
+  --shadow-primary: 0 10px 40px -10px rgba(67, 160, 71, 0.25);
+  --shadow-primary-lg: 0 20px 60px -15px rgba(67, 160, 71, 0.35);
 }
 
 body {
@@ -12,4 +16,53 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animated gradient for hero sections */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animated-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+/* Text gradient utility */
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Custom shadow utilities */
+.shadow-primary {
+  box-shadow: var(--shadow-primary);
+}
+
+.shadow-primary-lg {
+  box-shadow: var(--shadow-primary-lg);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Respect reduced motion preference for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

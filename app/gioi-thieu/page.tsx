@@ -1,42 +1,56 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+'use client';
 
-export const metadata: Metadata = {
-  title: "Giới Thiệu | Xe Ghép Nam Định - Hà Nội",
-  description: "Tìm hiểu về dịch vụ xe ghép Nam Định - Hà Nội. Quy trình đặt xe, khu vực phục vụ, cam kết chất lượng dịch vụ.",
-  openGraph: {
-    title: "Giới Thiệu | Xe Ghép Nam Định - Hà Nội",
-    description: "Tìm hiểu về dịch vụ xe ghép Nam Định - Hà Nội. Quy trình đặt xe, khu vực phục vụ, cam kết chất lượng dịch vụ.",
-    type: "website",
-    locale: "vi_VN",
-  },
-};
+import Link from "next/link";
+import { motion } from 'framer-motion';
+import { staggerContainer, staggerItem, buttonHover, buttonTap } from '@/lib/animations';
 
 export default function GioiThieu() {
   return (
     <div className="min-h-screen">
       {/* Header Section */}
-      <section className="bg-gradient-to-r from-primary to-primary-dark text-white py-16">
+      <section className="bg-gradient-to-r from-primary via-primary-dark to-primary text-white py-16 md:py-20 animated-gradient">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-4xl md:text-5xl font-bold mb-6"
+            >
               Giới thiệu dịch vụ
-            </h1>
-            <p className="text-lg md:text-xl text-gray-100">
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-lg md:text-xl text-gray-100"
+            >
               Dịch vụ xe ghép Nam Định - Hà Nội uy tín, chất lượng cao
-            </p>
+            </motion.p>
           </div>
         </div>
       </section>
 
       {/* About Service Section */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl font-bold text-gray-800 mb-6"
+            >
               Về dịch vụ của chúng tôi
-            </h2>
-            <div className="prose prose-lg max-w-none text-gray-600 space-y-4">
+            </motion.h2>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="prose prose-lg max-w-none text-gray-600 space-y-4"
+            >
               <p>
                 <strong className="text-primary">Xe Ghép Nam Định - Hà Nội</strong> là dịch vụ vận chuyển
                 hành khách chuyên nghiệp, cung cấp giải pháp di chuyển tiện lợi, an toàn và tiết kiệm
@@ -51,21 +65,34 @@ export default function GioiThieu() {
                 Với đội ngũ tài xế giàu kinh nghiệm, xe mới, sạch sẽ và quy trình đặt xe đơn giản,
                 chúng tôi tự hào là lựa chọn tin cậy của hàng ngàn khách hàng.
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Service Process Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-800 mb-12 text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl font-bold text-gray-800 mb-12 text-center"
+            >
               Quy trình sử dụng dịch vụ
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            </motion.h2>
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-100px' }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            >
               {/* Step 1 */}
-              <div className="text-center">
+              <motion.div variants={staggerItem} className="text-center bg-white p-6 rounded-xl shadow-md"
+              >
                 <div className="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                   1
                 </div>
@@ -76,10 +103,11 @@ export default function GioiThieu() {
                   Gọi điện hoặc nhắn tin Zalo cho chúng tôi để đặt xe. Cung cấp thông tin
                   về điểm đón, điểm trả và thời gian mong muốn.
                 </p>
-              </div>
+              </motion.div>
 
               {/* Step 2 */}
-              <div className="text-center">
+              <motion.div variants={staggerItem} className="text-center bg-white p-6 rounded-xl shadow-md"
+              >
                 <div className="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                   2
                 </div>
@@ -90,10 +118,11 @@ export default function GioiThieu() {
                   Chúng tôi sẽ xác nhận lại thông tin đặt xe, loại dịch vụ (ghép ghế hay bao xe),
                   giá cả và thời gian đón.
                 </p>
-              </div>
+              </motion.div>
 
               {/* Step 3 */}
-              <div className="text-center">
+              <motion.div variants={staggerItem} className="text-center bg-white p-6 rounded-xl shadow-md"
+              >
                 <div className="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                   3
                 </div>
@@ -104,8 +133,8 @@ export default function GioiThieu() {
                   Tài xế sẽ đến đón bạn đúng giờ tại địa điểm đã hẹn.
                   An toàn di chuyển và đưa bạn đến đích một cách thuận tiện nhất.
                 </p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
