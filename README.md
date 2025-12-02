@@ -1,4 +1,4 @@
-# Xe Ghép Nam Định - Hà Nội Website
+# Xe Ghép Nam Định - Hà Nội - Nội Bài Website
 
 Website dịch vụ xe ghép giữa Nam Định và Hà Nội, được xây dựng bằng Next.js 16 với App Router, TypeScript, và Tailwind CSS v4.
 
@@ -94,9 +94,9 @@ Màu sắc chính được định nghĩa trong `app/globals.css`:
 
 ```css
 @theme {
-  --color-primary: #43A047;        /* Xanh lá chính */
-  --color-primary-light: #66BB6A;  /* Xanh lá nhạt (hover) */
-  --color-primary-dark: #2E7D32;   /* Xanh lá đậm (active) */
+  --color-primary: #43a047; /* Xanh lá chính */
+  --color-primary-light: #66bb6a; /* Xanh lá nhạt (hover) */
+  --color-primary-dark: #2e7d32; /* Xanh lá đậm (active) */
 }
 ```
 

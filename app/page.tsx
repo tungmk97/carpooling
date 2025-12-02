@@ -1,9 +1,15 @@
-'use client';
+"use client";
 
 import Link from "next/link";
-import { motion } from 'framer-motion';
+import Image from "next/image";
+import { motion } from "framer-motion";
 import ImageCarousel from "@/components/ImageCarousel";
-import { staggerContainer, staggerItem, buttonHover, buttonTap } from '@/lib/animations';
+import {
+  staggerContainer,
+  staggerItem,
+  buttonHover,
+  buttonTap,
+} from "@/lib/animations";
 
 export default function Home() {
   const benefits = [
@@ -11,6 +17,7 @@ export default function Home() {
       title: "Tiện lợi và linh hoạt",
       description:
         "Đưa đón tận nơi, linh hoạt theo lịch trình của bạn. Không cần đến bến xe, tiết kiệm thời gian di chuyển.",
+      image: "/images/image1.jpg",
       icon: (
         <svg
           className="w-8 h-8"
@@ -31,6 +38,7 @@ export default function Home() {
       title: "Tiết kiệm chi phí",
       description:
         "Giá cả hợp lý, tiết kiệm hơn nhiều so với xe riêng hay taxi. Nhiều lựa chọn từ ghép ghế đến bao xe.",
+      image: "/images/image3.jpg",
       icon: (
         <svg
           className="w-8 h-8"
@@ -51,6 +59,7 @@ export default function Home() {
       title: "Chất lượng dịch vụ đảm bảo",
       description:
         "Xe mới, sạch sẽ, tài xế lái xe an toàn và thân thiện. Cam kết đúng giờ, đúng địa điểm.",
+      image: "/images/image5.jpg",
       icon: (
         <svg
           className="w-8 h-8"
@@ -71,6 +80,7 @@ export default function Home() {
       title: "Phù hợp nhiều nhu cầu",
       description:
         "Đáp ứng mọi nhu cầu: đi làm, thăm thân, du lịch, ra sân bay. Có cả ghép ghế và bao riêng xe.",
+      image: "/images/image7.jpg",
       icon: (
         <svg
           className="w-8 h-8"
@@ -91,6 +101,7 @@ export default function Home() {
       title: "Đặt xe dễ dàng",
       description:
         "Đặt xe nhanh chóng qua điện thoại hoặc Zalo. Chỉ cần một cuộc gọi là có xe đón bạn.",
+      image: "/images/image9.jpg",
       icon: (
         <svg
           className="w-8 h-8"
@@ -111,6 +122,7 @@ export default function Home() {
       title: "Lợi ích so với phương tiện khác",
       description:
         "Thoải mái hơn xe khách, rẻ hơn taxi, nhanh hơn xe bus. Không lo tắc đường hay tìm chỗ đỗ xe.",
+      image: "/images/image11.jpg",
       icon: (
         <svg
           className="w-8 h-8"
@@ -132,16 +144,23 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary via-primary-dark to-primary text-white py-16 md:py-24 animated-gradient">
-        <div className="container mx-auto px-4">
+      <section className="relative text-white min-h-[26vh] md:min-h-[40vh] flex items-center justify-center">
+        <Image
+          src="/images/banner.png"
+          alt="Xe Ghép Nam Định"
+          fill
+          className="object-contain -z-10"
+          priority
+        />
+        <div className="container mx-auto px-4 relative">
           <div className="max-w-3xl mx-auto text-center">
-            <motion.h1
+            {/* <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="text-2xl md:text-5xl font-bold mb-6"
             >
-              Xe Ghép Nam Định - Hà Nội
+              Xe Ghép Nam Định - Hà Nội - Nội Bài
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -150,30 +169,7 @@ export default function Home() {
               className="text-base md:text-xl mb-8 text-gray-100"
             >
               Dịch vụ đưa đón uy tín, tiện lợi, giá cả phải chăng
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <motion.a
-                whileHover={buttonHover}
-                whileTap={buttonTap}
-                href="tel:0971852897"
-                className="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-xl font-semibold text-lg transition-colors"
-              >
-                Gọi ngay: 0971 852 897
-              </motion.a>
-              <motion.div whileHover={buttonHover} whileTap={buttonTap}>
-                <Link
-                  href="/lien-he"
-                  className="block bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-3 rounded-xl font-semibold text-lg transition-colors"
-                >
-                  Xem thông tin liên hệ
-                </Link>
-              </motion.div>
-            </motion.div>
+            </motion.p> */}
           </div>
         </div>
       </section>
@@ -194,7 +190,7 @@ export default function Home() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: true, margin: "-100px" }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {benefits.map((benefit, index) => (
@@ -203,15 +199,29 @@ export default function Home() {
                 variants={staggerItem}
                 whileHover={{
                   y: -8,
-                  boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                  boxShadow:
+                    "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
                 }}
-                className="bg-gray-50 p-8 rounded-xl shadow-md transition-shadow"
+                className="bg-white rounded-xl shadow-md overflow-hidden transition-shadow"
               >
-                <div className="text-primary mb-4">{benefit.icon}</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600">{benefit.description}</p>
+                <div className="relative h-48 w-full">
+                  <Image
+                    src={benefit.image}
+                    alt={benefit.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-4 left-4 text-white">
+                    {benefit.icon}
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-gray-600">{benefit.description}</p>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -364,11 +374,11 @@ export default function Home() {
           >
             <ImageCarousel
               images={[
-                "/images/sua.png",
-                "/images/noithat1.jpg",
-                "/images/noithat1.jpg",
-                "/images/noithat1.jpg",
-                "/images/noithat1.jpg",
+                "/images/image7.jpg",
+                "/images/image2.jpg",
+                "/images/image3.jpg",
+                "/images/image4.jpg",
+                "/images/image5.jpg",
               ]}
             />
           </motion.div>

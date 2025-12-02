@@ -5,10 +5,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
             <h3 className="font-bold text-lg text-primary mb-3">
-              Xe Ghép Nam Định - Hà Nội
+              Xe Ghép Nam Định - Hà Nội - Nội Bài
             </h3>
             <p className="text-gray-600 text-sm">
-              Dịch vụ xe ghép uy tín, chất lượng cao, đưa đón tận nơi giữa Nam Định và Hà Nội.
+              Dịch vụ xe ghép uy tín, chất lượng cao, đưa đón tận nơi giữa Nam
+              Định và Hà Nội.
             </p>
           </div>
 
@@ -16,7 +17,10 @@ export default function Footer() {
             <h3 className="font-bold text-lg text-gray-800 mb-3">Liên hệ</h3>
             <ul className="space-y-2 text-sm text-gray-600">
               <li>
-                <a href="tel:0971852897" className="hover:text-primary transition-colors">
+                <a
+                  href="tel:0971852897"
+                  className="hover:text-primary transition-colors"
+                >
                   Điện thoại: 0971 852 897
                 </a>
               </li>
@@ -34,7 +38,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-bold text-lg text-gray-800 mb-3">Khu vực phục vụ</h3>
+            <h3 className="font-bold text-lg text-gray-800 mb-3">
+              Khu vực phục vụ
+            </h3>
             <ul className="space-y-2 text-sm text-gray-600">
               <li>Nam Định - Hà Nội</li>
               <li>Hà Nội - Nam Định</li>
@@ -44,7 +50,10 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 pt-6 border-t text-center text-sm text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Xe Ghép Nam Định - Hà Nội. Bản quyền được bảo lưu.</p>
+          <p>
+            &copy; {new Date().getFullYear()} Xe Ghép Nam Định - Hà Nội - Nội
+            Bài. Bản quyền được bảo lưu.
+          </p>
         </div>
       </div>
     </footer>

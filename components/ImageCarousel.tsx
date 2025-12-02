@@ -36,14 +36,17 @@ export default function ImageCarousel({
   const [[currentIndex, direction], setPage] = useState([0, 0]);
   const [isHovered, setIsHovered] = useState(false);
 
-  const paginate = useCallback((newDirection: number) => {
-    setPage(([prevIndex]) => {
-      let nextIndex = prevIndex + newDirection;
-      if (nextIndex < 0) nextIndex = images.length - 1;
-      if (nextIndex >= images.length) nextIndex = 0;
-      return [nextIndex, newDirection];
-    });
-  }, [images.length]);
+  const paginate = useCallback(
+    (newDirection: number) => {
+      setPage(([prevIndex]) => {
+        let nextIndex = prevIndex + newDirection;
+        if (nextIndex < 0) nextIndex = images.length - 1;
+        if (nextIndex >= images.length) nextIndex = 0;
+        return [nextIndex, newDirection];
+      });
+    },
+    [images.length]
+  );
 
   const goToSlide = (index: number) => {
     const newDirection = index > currentIndex ? 1 : -1;
@@ -97,7 +100,9 @@ export default function ImageCarousel({
           >
             <Image
               src={images[currentIndex]}
-              alt={`Dịch vụ xe ghép Nam Định - Hà Nội - Hình ${currentIndex + 1}`}
+              alt={`Dịch vụ Xe Ghép Nam Định - Hà Nội - Nội Bài - Hình ${
+                currentIndex + 1
+              }`}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
