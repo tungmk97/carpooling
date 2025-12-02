@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function FloatingContactBubbles() {
   return (
-    <div className="fixed bottom-6 right-12 z-50 flex flex-col gap-4">
+    <div className="fixed bottom-6 right-8 z-50 flex flex-col gap-4">
       {/* Phone bubble with ringing animation */}
       <motion.a
         href="tel:0971852897"
