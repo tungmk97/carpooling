@@ -24,7 +24,7 @@ export default function Header() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-xl md:text-2xl font-bold text-primary"
+            className="text-4xl md:text-4xl font-bold text-primary"
           >
             Xe Ghép Nam Định - Hà Nội - Nội Bài
           </motion.h1>
@@ -36,7 +36,7 @@ export default function Header() {
             transition={{ duration: 0.6, delay: 0.2 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="hidden md:flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all"
+            className="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-4 md:px-6 py-2 md:py-3 rounded-full font-bold text-base md:text-lg shadow-lg hover:shadow-xl transition-all"
           >
             <svg
               className="w-5 h-5"

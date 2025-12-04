@@ -38,7 +38,7 @@ export default function Home() {
       title: "Tiết kiệm chi phí",
       description:
         "Giá cả hợp lý, tiết kiệm hơn nhiều so với xe riêng hay taxi. Nhiều lựa chọn từ ghép ghế đến bao xe.",
-      image: "/images/image3.jpg",
+      image: "/images/image12.jpg",
       icon: (
         <svg
           className="w-8 h-8"
@@ -174,6 +174,23 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Slogan Section */}
+      <section className="py-5 bg-gradient-to-r from-primary via-primary-dark to-primary text-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h2 className="text-2xl md:text-4xl font-bold tracking-wide">
+              Đón tận nhà - Trả tận nơi
+            </h2>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Benefits Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -224,6 +241,26 @@ export default function Home() {
                 </div>
               </motion.div>
             ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Route Map Section */}
+      <section className="pb-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <Image
+              src="/images/cac-tuyen.jpg"
+              alt="Các tuyến đường"
+              width={1920}
+              height={1080}
+              className="w-full h-auto rounded-xl shadow-lg"
+            />
           </motion.div>
         </div>
       </section>
